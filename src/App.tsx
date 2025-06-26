@@ -1,9 +1,7 @@
+import Text from "./components/text";
+
 function App() {
-  return (
-    <div>
-      <span>Todo List 2025</span>
-    </div>
-  );
+  return <Text variant="body-md-bold">Todo List</Text>;
 }
 
 export default App;
