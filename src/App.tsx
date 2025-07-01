@@ -1,6 +1,7 @@
 import Badge from "./components/badge";
 import Button from "./components/button";
 import ButtonIcon from "./components/button-icon";
+import InputText from "./components/input-text";
 import Text from "./components/text";
 import { PlusIcon, TrashIcon } from "@phosphor-icons/react";
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <ButtonIcon variant="secondary" icon={<TrashIcon />} />
         <ButtonIcon variant="tertiary" icon={<TrashIcon />} />
       </div>
+
+      <InputText />
     </div>
   );
 }
