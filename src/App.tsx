@@ -1,7 +1,8 @@
 import Badge from "./components/badge";
 import Button from "./components/button";
+import ButtonIcon from "./components/button-icon";
 import Text from "./components/text";
-import { PlusIcon } from "@phosphor-icons/react";
+import { PlusIcon, TrashIcon } from "@phosphor-icons/react";
 function App() {
   return (
     <div>
@@ -17,6 +18,12 @@ function App() {
       >
         Enviar
       </Button>
+
+      <div>
+        <ButtonIcon icon={<TrashIcon />} />
+        <ButtonIcon variant="secondary" icon={<TrashIcon />} />
+        <ButtonIcon variant="tertiary" icon={<TrashIcon />} />
+      </div>
     </div>
   );
 }
