@@ -15,8 +15,13 @@ function App() {
     <Container className="space-y-4 mt-5">
       <Text> Marinao</Text>
 
-      <Badge variant="secondary">5</Badge>
-      <Badge variant="primary">2 de 5</Badge>
+      <div className="flex gap-2">
+        <Badge variant="secondary">5</Badge>
+        <Badge variant="primary">2 de 5</Badge>
+        <Badge variant="secondary" loading>
+          5
+        </Badge>
+      </div>
 
       <Button
         variant="primary"
@@ -26,8 +31,9 @@ function App() {
         Enviar
       </Button>
 
-      <div>
+      <div className="flex items-center gap-2">
         <ButtonIcon icon={<TrashIcon />} />
+        <ButtonIcon icon={<TrashIcon />} loading />
         <ButtonIcon variant="secondary" icon={<TrashIcon />} />
         <ButtonIcon variant="tertiary" icon={<TrashIcon />} />
       </div>

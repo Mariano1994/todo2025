@@ -1,10 +1,12 @@
 import { cva, type VariantProps } from "class-variance-authority";
+import Skeleton from "./skeleton";
 
 export const buttonIconVariant = cva(
   " inline-flex justify-center items-center cursor-pointer transition group",
   {
     variants: {
       variant: {
+        none: "",
         primary: "bg-green-base hover:bg-green-dark",
         secondary: "bg-pink-base text-white hover:bg-pink-dark",
         tertiary: "bg-transparent hover:bg-gray-200",
@@ -29,6 +31,7 @@ export const buttonIconVariant = cva(
 export const buttonIconIconVariant = cva("transition", {
   variants: {
     variant: {
+      none: "",
       primary: "fill-white",
       secondary: "fill-pink-base group-hover:fill-white",
       tertiary: "fill-gray-300 group-hover:fill-gray-400",
@@ -47,6 +50,7 @@ interface ButtonProps
   extends Omit<React.ComponentProps<"button">, "disabled">,
     VariantProps<typeof buttonIconVariant> {
   icon: React.ReactNode;
+  loading?: boolean;
 }
 
 function ButtonIcon({
@@ -54,9 +58,17 @@ function ButtonIcon({
   size,
   disabled,
   className,
+  loading,
   icon,
   ...props
 }: ButtonProps) {
+  if (loading)
+    return (
+      <Skeleton
+        rounded="sm"
+        className={buttonIconVariant({ size, variant: "none", className })}
+      />
+    );
   return (
     <button
       {...props}
