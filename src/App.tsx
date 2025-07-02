@@ -1,6 +1,7 @@
 import Badge from "./components/badge";
 import Button from "./components/button";
 import ButtonIcon from "./components/button-icon";
+import Card from "./components/card";
 import InputCheckbox from "./components/input-checkbox";
 import InputText from "./components/input-text";
 import Text from "./components/text";
@@ -31,6 +32,13 @@ function App() {
 
       <InputText />
       <InputCheckbox icon={<CheckIcon />} />
+
+      <Card size="md">
+        <div className="flex items-center gap-4 ">
+          <InputText className="w-sm" />
+          <InputCheckbox icon={<CheckIcon />} />
+        </div>
+      </Card>
     </div>
   );
 }
