@@ -1,9 +1,12 @@
 import Badge from "./components/badge";
 import Button from "./components/button";
 import ButtonIcon from "./components/button-icon";
+import InputCheckbox from "./components/input-checkbox";
 import InputText from "./components/input-text";
 import Text from "./components/text";
 import { PlusIcon, TrashIcon } from "@phosphor-icons/react";
+
+import { CheckIcon } from "@phosphor-icons/react";
 function App() {
   return (
     <div>
@@ -27,6 +30,7 @@ function App() {
       </div>
 
       <InputText />
+      <InputCheckbox icon={<CheckIcon />} />
     </div>
   );
 }
