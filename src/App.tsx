@@ -5,13 +5,14 @@ import Card from "./components/card";
 import Container from "./components/container";
 import InputCheckbox from "./components/input-checkbox";
 import InputText from "./components/input-text";
+import Skeleton from "./components/skeleton";
 import Text from "./components/text";
 import { PlusIcon, TrashIcon } from "@phosphor-icons/react";
 
 import { CheckIcon } from "@phosphor-icons/react";
 function App() {
   return (
-    <Container>
+    <Container className="space-y-4 mt-5">
       <Text> Marinao</Text>
 
       <Badge variant="secondary">5</Badge>
@@ -40,6 +41,12 @@ function App() {
           <InputCheckbox icon={<CheckIcon />} />
         </div>
       </Card>
+
+      <div className="space-y-4">
+        <Skeleton className="h-6" />
+        <Skeleton className="h-6" />
+        <Skeleton className="h-6" />
+      </div>
     </Container>
   );
 }
