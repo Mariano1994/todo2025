@@ -1,60 +1,8 @@
-import Badge from "./components/badge";
-import Button from "./components/button";
-import ButtonIcon from "./components/button-icon";
-import Card from "./components/card";
-import Container from "./components/container";
-import InputCheckbox from "./components/input-checkbox";
-import InputText from "./components/input-text";
-import Skeleton from "./components/skeleton";
-import Text from "./components/text";
-import { PlusIcon, TrashIcon } from "@phosphor-icons/react";
+import { RouterProvider } from "react-router";
+import { route } from "./routes/route";
 
-import { CheckIcon } from "@phosphor-icons/react";
 function App() {
-  return (
-    <Container className="space-y-4 mt-5">
-      <Text> Marinao</Text>
-
-      <div className="flex gap-2">
-        <Badge variant="secondary">5</Badge>
-        <Badge variant="primary">2 de 5</Badge>
-        <Badge variant="secondary" loading>
-          5
-        </Badge>
-      </div>
-
-      <Button
-        variant="primary"
-        size="md"
-        icon={<PlusIcon className="text-green-dark" />}
-      >
-        Enviar
-      </Button>
-
-      <div className="flex items-center gap-2">
-        <ButtonIcon icon={<TrashIcon />} />
-        <ButtonIcon icon={<TrashIcon />} loading />
-        <ButtonIcon variant="secondary" icon={<TrashIcon />} />
-        <ButtonIcon variant="tertiary" icon={<TrashIcon />} />
-      </div>
-
-      <InputText />
-      <InputCheckbox icon={<CheckIcon />} />
-
-      <Card size="md">
-        <div className="flex items-center gap-4 ">
-          <InputText className="w-sm" />
-          <InputCheckbox icon={<CheckIcon />} />
-        </div>
-      </Card>
-
-      <div className="space-y-4">
-        <Skeleton className="h-6" />
-        <Skeleton className="h-6" />
-        <Skeleton className="h-6" />
-      </div>
-    </Container>
-  );
+  return <RouterProvider router={route} />;
 }
 
 export default App;
