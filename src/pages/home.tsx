@@ -8,7 +8,6 @@ import InputText from "../components/input-text";
 import InputCheckbox from "../components/input-checkbox";
 import Card from "../components/card";
 import Skeleton from "../components/skeleton";
-import { NavLink } from "react-router";
 
 function Home() {
   return (

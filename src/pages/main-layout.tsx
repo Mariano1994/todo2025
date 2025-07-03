@@ -1,10 +1,11 @@
 import { NavLink, Outlet } from "react-router";
-import Container from "../components/container";
+
+import Header from "../core-components/header";
 
 function MainLayout() {
   return (
     <>
-      <Container as="header">Ola mundo Header</Container>
+      <Header />
 
       <main>
         <Outlet />
