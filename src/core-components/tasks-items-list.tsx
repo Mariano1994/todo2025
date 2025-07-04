@@ -11,6 +11,7 @@ function TasksItemsList() {
   function handleCreateTask() {
     prepareTask();
   }
+
   return (
     <>
       <section>

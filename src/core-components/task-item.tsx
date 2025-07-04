@@ -29,6 +29,7 @@ function TaskItem(task: TaskItemProps) {
 
   const handleExitEditing = () => {
     setIsEditing(false);
+    updateTask(task.task.id, { title: "" });
   };
 
   const handleSaveTask = (event: React.FormEvent<HTMLFormElement>) => {

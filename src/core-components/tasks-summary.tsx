@@ -1,7 +1,9 @@
 import Badge from "../components/badge";
 import Text from "../components/text";
+import useTasks from "../hooks/use-tasks";
 
 function TasksSummary() {
+  const { tasksCount, concludedTasksCount } = useTasks();
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-2">
@@ -9,7 +11,7 @@ function TasksSummary() {
           {" "}
           Tarefas Criadas
         </Text>
-        <Badge variant={"secondary"}>5</Badge>
+        <Badge variant={"secondary"}>{tasksCount}</Badge>
       </div>
 
       <div className="flex items-center gap-2">
@@ -17,7 +19,9 @@ function TasksSummary() {
           {" "}
           Concluidas
         </Text>
-        <Badge variant={"primary"}>2 de 5</Badge>
+        <Badge variant={"primary"}>
+          {concludedTasksCount} de {tasksCount}
+        </Badge>
       </div>
     </div>
   );
