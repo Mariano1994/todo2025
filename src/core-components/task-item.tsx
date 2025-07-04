@@ -7,17 +7,20 @@ import { TrashIcon, CheckIcon, XIcon, PencilIcon } from "@phosphor-icons/react";
 import InputText from "../components/input-text";
 import type { Task } from "../models/task";
 import { cx } from "class-variance-authority";
+import useTask from "../hooks/use-task";
 
 interface TaskItemProps {
   task: Task;
 }
 
 function TaskItem(task: TaskItemProps) {
-  const [isEditing, setIsEditing] = useState(task.task.satate === "creating");
-  const [taskTitle, setTaskTitle] = useState("");
+  const [isEditing, setIsEditing] = useState(task.task.state === "creating");
+  const [taskTitle, setTaskTitle] = useState(task.task.title || "");
+
+  const { updateTask } = useTask();
 
   function handleCgangeTastkTitle(event: React.ChangeEvent<HTMLInputElement>) {
-    setTaskTitle(event.target.value);
+    setTaskTitle(event.target.value || "");
   }
 
   const handleEditing = () => {
@@ -28,9 +31,9 @@ function TaskItem(task: TaskItemProps) {
     setIsEditing(false);
   };
 
-  const handleSaveTask = () => {
-    console.log({ task: task.task.id, title: taskTitle });
-
+  const handleSaveTask = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    updateTask(task.task.id, { title: taskTitle });
     setIsEditing(false);
   };
   return (
@@ -60,6 +63,7 @@ function TaskItem(task: TaskItemProps) {
             onChange={handleCgangeTastkTitle}
             required
             autoFocus
+            value={taskTitle}
           />
           <div className="flex gap-2">
             <ButtonIcon

@@ -18,7 +18,7 @@ function TasksItemsList() {
           icon={<PlusIcon />}
           className="w-full"
           onClick={handleCreateTask}
-          disabled={tasks.some((task) => task.satate === TaskState.Creating)}
+          disabled={tasks.some((task) => task.state === TaskState.Creating)}
         >
           Nova tarefa
         </Button>
