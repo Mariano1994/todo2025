@@ -33,10 +33,15 @@ function useTask() {
       )
     );
   }
+
+  function deletetask(id: string) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
   return {
     updateTask,
     prepareTask,
     updateTaskStatus,
+    deletetask,
   };
 }
 
