@@ -17,7 +17,7 @@ function TaskItem(task: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(task.task.state === "creating");
   const [taskTitle, setTaskTitle] = useState(task.task.title || "");
 
-  const { updateTask } = useTask();
+  const { updateTask, updateTaskStatus } = useTask();
 
   function handleCgangeTastkTitle(event: React.ChangeEvent<HTMLInputElement>) {
     setTaskTitle(event.target.value || "");
@@ -36,11 +36,21 @@ function TaskItem(task: TaskItemProps) {
     updateTask(task.task.id, { title: taskTitle });
     setIsEditing(false);
   };
+
+  const handleUpdateTaskStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked;
+
+    updateTaskStatus(task.task.id, checked);
+  };
   return (
     <Card size={`md`}>
       {!isEditing ? (
         <div className="flex items-center gap-4">
-          <InputCheckbox checked={task?.task?.concluded} icon={<CheckIcon />} />
+          <InputCheckbox
+            icon={<CheckIcon />}
+            onChange={handleUpdateTaskStatus}
+            value={task?.task?.concluded.toString()}
+          />
           <Text
             className={cx("flex-1", { "line-through": task?.task?.concluded })}
           >

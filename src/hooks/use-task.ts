@@ -26,9 +26,17 @@ function useTask() {
     );
   }
 
+  function updateTaskStatus(id: string, conclued: boolean) {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, concluded: conclued } : task
+      )
+    );
+  }
   return {
     updateTask,
     prepareTask,
+    updateTaskStatus,
   };
 }
 
