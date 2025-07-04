@@ -7,7 +7,7 @@ import { TrashIcon, CheckIcon, XIcon, PencilIcon } from "@phosphor-icons/react";
 import InputText from "../components/input-text";
 
 function TaskItem() {
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleEditing = () => {
     setIsEditing(true);

@@ -23,7 +23,7 @@ export const buttonVariant = cva(
   }
 );
 
-export const buttonIconVariant = cva("transition", {
+export const buttonIconVariant = cva("transition mt-1.5", {
   variants: {
     variant: {
       primary: "fill-pink-base",

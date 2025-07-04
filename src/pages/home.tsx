@@ -1,12 +1,12 @@
 import Container from "../components/container";
-import TaskItem from "../core-components/task-item";
+import TasksItemsList from "../core-components/tasks-items-list";
 import TasksSummary from "../core-components/tasks-summary";
 
 function Home() {
   return (
     <Container as="article" className="space-y-3">
       <TasksSummary />
-      <TaskItem />
+      <TasksItemsList />
     </Container>
   );
 }
