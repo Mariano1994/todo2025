@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import Skeleton from "./skeleton";
 
 export const buttonIconVariant = cva(
   " inline-flex justify-center items-center cursor-pointer transition group",
@@ -62,13 +61,6 @@ function ButtonIcon({
   icon,
   ...props
 }: ButtonProps) {
-  if (loading)
-    return (
-      <Skeleton
-        rounded="sm"
-        className={buttonIconVariant({ size, variant: "none", className })}
-      />
-    );
   return (
     <button
       {...props}

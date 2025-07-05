@@ -3,7 +3,13 @@ import ButtonIcon from "../components/button-icon";
 import Card from "../components/card";
 import InputCheckbox from "../components/input-checkbox";
 import Text from "../components/text";
-import { TrashIcon, CheckIcon, XIcon, PencilIcon } from "@phosphor-icons/react";
+import {
+  TrashIcon,
+  CheckIcon,
+  XIcon,
+  PencilIcon,
+  SpinnerIcon,
+} from "@phosphor-icons/react";
 import InputText from "../components/input-text";
 import type { Task } from "../models/task";
 import { cx } from "class-variance-authority";
@@ -19,7 +25,13 @@ function TaskItem({ task, loading }: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(task?.state === "creating");
   const [taskTitle, setTaskTitle] = useState(task?.title || "");
 
-  const { updateTask, updateTaskStatus, deletetask } = useTask();
+  const {
+    updateTask,
+    updateTaskStatus,
+    deletetask,
+    isDeletingTask,
+    isUpdatingTask,
+  } = useTask();
 
   function handleCgangeTastkTitle(event: React.ChangeEvent<HTMLInputElement>) {
     setTaskTitle(event.target.value || "");
@@ -37,21 +49,21 @@ function TaskItem({ task, loading }: TaskItemProps) {
     setIsEditing(false);
   };
 
-  const handleSaveTask = (event: React.FormEvent<HTMLFormElement>) => {
+  async function handleSaveTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    updateTask(task?.id, { title: taskTitle });
+    await updateTask(task?.id, { title: taskTitle });
     setIsEditing(false);
-  };
+  }
 
   const handleUpdateTaskStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
-
     updateTaskStatus(task?.id, checked);
   };
 
-  const handleDeleteTask = () => {
-    deletetask(task?.id);
-  };
+  async function handleDeleteTask() {
+    await deletetask(task?.id);
+  }
+
   return (
     <Card size={`md`}>
       {!isEditing ? (
@@ -79,7 +91,13 @@ function TaskItem({ task, loading }: TaskItemProps) {
               <div className="flex gap-1">
                 <ButtonIcon
                   variant={"tertiary"}
-                  icon={<TrashIcon />}
+                  icon={
+                    isDeletingTask ? (
+                      <SpinnerIcon className=" animate-spin" />
+                    ) : (
+                      <TrashIcon />
+                    )
+                  }
                   onClick={handleDeleteTask}
                 />
                 <ButtonIcon
@@ -111,7 +129,13 @@ function TaskItem({ task, loading }: TaskItemProps) {
             <ButtonIcon
               type="submit"
               variant={"primary"}
-              icon={<CheckIcon />}
+              icon={
+                isUpdatingTask ? (
+                  <SpinnerIcon className=" animate-spin" />
+                ) : (
+                  <CheckIcon />
+                )
+              }
             />
           </div>
         </form>
