@@ -8,13 +8,13 @@ function Footer() {
       <nav className=" flex justify-center items-center gap-4">
         <NavLink to="/">
           <Text variant="body-sm-bold" className="text-gray-300">
-            Tarefas
+            Tarefas do dia
           </Text>
         </NavLink>
 
-        <NavLink to="/">
+        <NavLink to="/reports">
           <Text variant="body-sm-bold" className="text-gray-300">
-            Tarefas
+            Relatório do dia
           </Text>
         </NavLink>
       </nav>
