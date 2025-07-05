@@ -6,7 +6,7 @@ import useTask from "../hooks/use-task";
 import { TaskState } from "../models/task";
 
 function TasksItemsList() {
-  const { tasks } = useTasks();
+  const { tasks, isLoadingTasks } = useTasks();
   const { prepareTask } = useTask();
   function handleCreateTask() {
     prepareTask();
@@ -19,16 +19,27 @@ function TasksItemsList() {
           icon={<PlusIcon />}
           className="w-full"
           onClick={handleCreateTask}
-          disabled={tasks.some((task) => task.state === TaskState.Creating)}
+          disabled={
+            tasks.some((task) => task.state === TaskState.Creating) ||
+            isLoadingTasks
+          }
         >
           Nova tarefa
         </Button>
       </section>
 
       <section className="space-y-2">
-        {tasks.map((task) => (
-          <TaskItem task={task} key={task.id} />
-        ))}
+        {!isLoadingTasks &&
+          tasks.map((task) => <TaskItem task={task} key={task.id} />)}
+
+        {isLoadingTasks && (
+          <>
+            <TaskItem task={tasks[0]} loading />
+            <TaskItem task={tasks[0]} loading />
+            <TaskItem task={tasks[0]} loading />
+            <TaskItem task={tasks[0]} loading />
+          </>
+        )}
       </section>
     </>
   );

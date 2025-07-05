@@ -15,6 +15,9 @@ export const inputCheckboxVariants = cva(
       disabled: {
         true: "pointer-events-none",
       },
+      loading: {
+        true: "animate-pulse bg-gray-200 pointer-events-none",
+      },
     },
     defaultVariants: {
       size: "md",
@@ -46,6 +49,7 @@ interface InputCheckboxProps
 function InputCheckbox({
   size,
   disabled,
+  loading,
   className,
   icon,
   ...props
